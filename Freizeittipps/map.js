@@ -30,7 +30,7 @@ function main() {
         center: [49.1397278, 9.219251], 
         zoom: setInitialMapZoom(),
         zoomControl: false,
-        minZoom: 10,
+        minZoom: 8,
         maxZoom: 15,
         maxBounds: bounds // Sets bounds as max
       };
