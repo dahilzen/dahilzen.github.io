@@ -77,7 +77,7 @@
 /*stimme.de-Logo positionieren*/
 #stimme-logo {
 		position: absolute;
-        top: 60px;
+        top: 10px;
         right: 10px;
 		z-index: 5;
 }
