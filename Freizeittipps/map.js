@@ -27,7 +27,7 @@ function main() {
 
     //  center and zoom level
     var options = {
-        zoomControl: false,
+        zoomControl: true,
         minZoom: 5,
         maxZoom: 15,
         //maxBounds: bounds // Sets bounds as max
