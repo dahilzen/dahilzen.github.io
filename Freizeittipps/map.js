@@ -27,7 +27,6 @@ function main() {
 
     //  center and zoom level
     var options = {
-        center: [49.1397278,9.219251], // Heilbronn 
         zoom: setInitialMapZoom(),
         zoomControl: false,
         minZoom: 10,
