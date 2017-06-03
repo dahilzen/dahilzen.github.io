@@ -31,7 +31,7 @@ function main() {
         cartodb_logo: false,
         center: [49.1397278, 9.219251], 
         zoom: setInitialMapZoom(),
-        zoomControl: false,
+        zoomControl: true,
         minZoom: 8,
         maxZoom: 15,
         maxBounds: bounds // Sets bounds as max

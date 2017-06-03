@@ -89,6 +89,11 @@
     z-index: 5;
 }
 
+.leaflet-control-zoom {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+}
 
 
 
