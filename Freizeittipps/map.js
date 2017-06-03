@@ -22,7 +22,7 @@ function main() {
     var polygon;
     var bounds = [
         [48.994636, 8.787689], // Southwest coordinates
-        [59.442236, 9.908295] // Northeast coordinates
+        [49.442236, 9.908295] // Northeast coordinates
     ];
 
 
