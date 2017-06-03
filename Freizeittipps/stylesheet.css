@@ -8,7 +8,7 @@
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: grey;
+    background-color: white;
     overflow: hidden;
     position: fixed;
     top: 0px;
@@ -19,7 +19,7 @@
 .topnav a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
