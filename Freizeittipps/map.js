@@ -4,9 +4,9 @@ function setInitialMapZoom() {
     var mapZoom;
 
     if (viewportWidth < [800]) {
-        mapZoom = [10];
+        mapZoom = [8];
     } else {
-        mapZoom = [10];
+        mapZoom = [8];
     }
 
     return mapZoom;
@@ -28,7 +28,7 @@ function main() {
     //  center and zoom level
     var options = {
         zoomControl: false,
-        minZoom: 8,
+        minZoom: 5,
         maxZoom: 15,
         //maxBounds: bounds // Sets bounds as max
     };
