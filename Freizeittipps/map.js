@@ -28,6 +28,7 @@ function main() {
 
           //  center and zoom level
       var options = {
+        cartodb_logo: false,
         center: [49.1397278, 9.219251], 
         zoom: setInitialMapZoom(),
         zoomControl: false,
