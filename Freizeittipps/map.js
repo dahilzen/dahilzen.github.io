@@ -20,18 +20,21 @@ function main() {
     var attr2 = [];
     var polygon;
     var bounds = [
-        [48.994636, 8.787689], // Southwest coordinates
-        [49.442236, 9.908295] // Northeast coordinates
+        [47.994636, 8.787689], // Southwest coordinates
+        [50.442236, 9.908295] // Northeast coordinates
     ];
 
 
-    //  center and zoom level
-    var options = {
-        zoomControl: true,
-        minZoom: 5,
+          //  center and zoom level
+      var options = {
+        center: [49.1397278, 9.219251], 
+        zoom: setInitialMapZoom(),
+        zoomControl: false,
+        minZoom: 10,
         maxZoom: 15,
-        //maxBounds: bounds // Sets bounds as max
-    };
+        maxBounds: bounds // Sets bounds as max
+      };
+
 
     var map_object = new L.Map('map', options);
 
