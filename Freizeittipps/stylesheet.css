@@ -82,6 +82,12 @@
 		z-index: 5;
 }
 
+[title~="CARTO"] {
+    position: absolute;
+        top: 20px;
+        right: 10px;
+    z-index: 5;
+}
 
 
 
