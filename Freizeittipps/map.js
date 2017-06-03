@@ -21,8 +21,8 @@ function main() {
     var attr2 = [];
     var polygon;
     var bounds = [
-        [47.994636, 8.787689], // Southwest coordinates
-        [50.442236, 9.908295] // Northeast coordinates
+        [48.994636, 8.787689], // Southwest coordinates
+        [59.442236, 9.908295] // Northeast coordinates
     ];
 
 
