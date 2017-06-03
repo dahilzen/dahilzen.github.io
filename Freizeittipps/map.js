@@ -28,8 +28,8 @@ function main() {
 
           //  center and zoom level
       var options = {
-        center: [49.1397278, 9.219251], 
-        zoom: MapZoom,
+        //center: [49.1397278, 9.219251], 
+        zoom: setInitialMapZoom(),
         zoomControl: false,
         minZoom: 8,
         maxZoom: 15,
