@@ -27,7 +27,6 @@ function main() {
 
     //  center and zoom level
     var options = {
-        zoom: setInitialMapZoom(),
         zoomControl: false,
         minZoom: 10,
         maxZoom: 15,
