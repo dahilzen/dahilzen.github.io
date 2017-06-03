@@ -28,9 +28,9 @@ function main() {
     //  center and zoom level
     var options = {
         zoomControl: false,
-        minZoom: 10,
+        minZoom: 8,
         maxZoom: 15,
-        maxBounds: bounds // Sets bounds as max
+        //maxBounds: bounds // Sets bounds as max
     };
 
     var map_object = new L.Map('map', options);
