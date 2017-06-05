@@ -1,83 +1,81 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-
 body {
-  font: 12px sans-serif;
+    font: 12px sans-serif;
 }
 
 path {
-  stroke-width: 1px;
-  stroke: white;
-  fill: steelblue;
-  cursor: pointer;
+    stroke-width: 1px;
+    stroke: white;
+    fill: steelblue;
+    cursor: pointer;
 }
 
-path:hover, path.highlighted {
-  fill: tomato;
+path:hover,
+path.highlighted {
+    fill: tomato;
 }
-
 </style>
+
 <body>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://d3js.org/topojson.v1.min.js"></script>
-<script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script>
+    //Map dimensions (in pixels)
+    var width = 2000,
+        height = 1000;
 
-//Map dimensions (in pixels)
-var width = 2000,
-    height = 1000;
+    //Map projection
+    var projection = d3.geoMercator()
+        .scale(59.54053439188244)
+        .center([0, 43.790094023341574]) //projection center
+        .translate([width / 2, height / 2]) //translate to center the map in view
 
-//Map projection
-var projection = d3.geoMercator()
-    .scale(59.54053439188244)
-    .center([0,43.790094023341574]) //projection center
-    .translate([width/2,height/2]) //translate to center the map in view
+    //Generate paths based on projection
+    var path = d3.geoPath()
+        .projection(projection);
 
-//Generate paths based on projection
-var path = d3.geoPath()
-    .projection(projection);
+    //Create an SVG
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
 
-//Create an SVG
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    //Group for the map features
+    var features = svg.append("g")
+        .attr("class", "features");
 
-//Group for the map features
-var features = svg.append("g")
-    .attr("class","features");
+    //Create zoom/pan listener
+    //Change [1,Infinity] to adjust the min/max zoom scale
+    var zoom = d3.zoom()
+        .scaleExtent([1, Infinity])
+        .on("zoom", zoomed);
 
-//Create zoom/pan listener
-//Change [1,Infinity] to adjust the min/max zoom scale
-var zoom = d3.zoom()
-    .scaleExtent([1, Infinity])
-    .on("zoom",zoomed);
+    svg.call(zoom);
 
-svg.call(zoom);
+    d3.json("https://raw.githubusercontent.com/dahilzen/Tests/master/countries.topojson", function(error, geodata) {
+        if (error) return console.log(error); //unknown error, check the console
 
-d3.json("https://raw.githubusercontent.com/dahilzen/Tests/master/countries.topojson",function(error,geodata) {
-  if (error) return console.log(error); //unknown error, check the console
+        //Create a path for each map feature in the data
+        features.selectAll("path")
+            .data(topojson.feature(geodata, geodata.objects.subunits).features) //generate features from TopoJSON
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .on("click", clicked);
 
-  //Create a path for each map feature in the data
-  features.selectAll("path")
-    .data(topojson.feature(geodata,geodata.objects.subunits).features) //generate features from TopoJSON
-    .enter()
-    .append("path")
-    .attr("d",path)
-    .on("click",clicked);
+    });
 
-});
+    // Add optional onClick events for features here
+    // d.properties contains the attributes (e.g. d.properties.name, d.properties.population)
+    function clicked(d, i) {
 
-// Add optional onClick events for features here
-// d.properties contains the attributes (e.g. d.properties.name, d.properties.population)
-function clicked(d,i) {
-
-}
+    }
 
 
-//Update map on zoom/pan
-function zoomed() {
-  features.attr("transform", "translate(" + zoom.translate() + ")scale(" + zoom.scale() + ")")
-      .selectAll("path").style("stroke-width", 1 / zoom.scale() + "px" );
-}
-
-</script>
+    //Update map on zoom/pan
+    function zoomed() {
+        features.attr("transform", "translate(" + zoom.translate() + ")scale(" + zoom.scale() + ")")
+            .selectAll("path").style("stroke-width", 1 / zoom.scale() + "px");
+    }
+    </script>
