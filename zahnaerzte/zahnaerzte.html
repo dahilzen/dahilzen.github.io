@@ -5,8 +5,9 @@
     <title>Zahnärzte in Baden-Württemberg</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <link rel="stylesheet" href="https://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="shortcut icon" href="https://cartodb.com/assets/favicon.ico" />
+    <script src="https://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
     <script src="map.js"></script>
     <style>
     html,
@@ -17,52 +18,10 @@
         margin: 0;
     }
     </style>
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
 </head>
 
 <body>
     <div id="map"></div>
-    <!-- include cartodb.js library -->
-<!--     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
-    <script>
-    function main() {
-        var bounds = [
-            [48.6202, 7.9047], // Southwest coordinates
-            [49.6534, 10.6155] // Northeast coordinates
-        ];
-        cartodb.createVis('map', 'http://dahilzen.carto.com/api/v2/viz/5f7114b0-4a32-11e7-b3f2-0e98b61680bf/viz.json', {
-                shareable: false,
-                title: false,
-                description: false,
-                search: true,
-                tiles_loader: true,
-                center_lat: 48.6616040,
-                center_lon: 9.3501340,
-                zoom: 8,
-                maxBounds: bounds,
-            })
-            .done(function(vis, layers) {
-                // layer 0 is the base layer, layer 1 is cartodb layer
-                // setInteraction is disabled by default
-                layers[1].setInteraction(true);
-                layers[1].on('featureOver', function(e, latlng, pos, data) {
-                    cartodb.log.log(e, latlng, pos, data);
-                });
-
-                // you can get the native map to work with it
-                var map = vis.getNativeMap();
-
-                // now, perform any operations you need
-                // map.setZoom(3);
-                // map.panTo([50.5, 30.5]);
-            })
-            .error(function(err) {
-                console.log(err);
-            });
-    }
-
-    window.onload = main;
-    </script> -->
 </body>
 
 </html>
