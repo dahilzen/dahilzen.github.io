@@ -102,10 +102,7 @@ function showTooltip(d) {
   moveTooltip();
 
   tooltip.style("display","block")
-  .html({
-    return "<strong>Frequency:</strong> <span style='color:red'>" + d.properties.strasse + "</span>";
-  })
-     // .text(d.properties.lage, d.properties.strasse);
+  .text(d.properties.strasse);
 }
 
 //Move the tooltip to track the mouse
