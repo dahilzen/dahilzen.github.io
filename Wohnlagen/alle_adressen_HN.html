@@ -102,7 +102,7 @@ function showTooltip(d) {
   moveTooltip();
 
   tooltip.style("display","block")
-      .text(d.properties.lage);
+      .text(d.properties.lage \n d.properties.strasse);
 }
 
 //Move the tooltip to track the mouse
