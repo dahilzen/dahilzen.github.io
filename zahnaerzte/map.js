@@ -31,7 +31,7 @@ function main() {
     var map_object = new L.Map('map', options);
     // set basemap
     L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-        attribution: 'Karte: <a href="https://www.twitter.com/dahilzen">David Hilzendegen</a> | <a href="https://www.stimme.de">www.stimme.de</a>'
+        attribution: 'Karte: <a href="https://www.twitter.com/dahilzen">David Hilzendegen</a> | Quelle: <a href="https://www.kzvbw.de">KZV BW</a> | <a href="https://www.stimme.de">www.stimme.de</a>'
     }).addTo(map_object);
     var sublayers = [];
     // cartodb createLayer
