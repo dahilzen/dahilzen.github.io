@@ -102,7 +102,7 @@ function showTooltip(d) {
   moveTooltip();
 
   tooltip.style("display","block")
-  .html(function(d.properties) {
+  .html({
     return "<strong>Frequency:</strong> <span style='color:red'>" + d.properties.strasse + "</span>";
   })
      // .text(d.properties.lage, d.properties.strasse);
