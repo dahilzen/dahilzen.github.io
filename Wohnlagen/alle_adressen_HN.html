@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 12px sans-serif;
+}
+
+path {
+  stroke: none;
+  fill: #999;
+  cursor: pointer;
+}
+
+path.q0-3 {
+  fill: #00ff2a;
+}
+
+path.q1-3 {
+  fill: #f6ff00;
+}
+
+path.q2-3 {
+  fill: #ff0000;
+}
+
+div.tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold;
+  padding: 4px 8px;
+  display: none;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<script>
+
+//Map dimensions (in pixels)
+var width = 990,
+    height = 516;
+
+//Map projection
+var projection = d3.geoMercator()
+    .scale(201636.3726545554)
+    .center([9.183771,49.1556739423777]) //projection center
+    .translate([width/2,height/2]) //translate to center the map in view
+
+//Generate paths based on projection
+var path = d3.geoPath()
+    .projection(projection);
+
+//Create an SVG
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+//Group for the map features
+var features = svg.append("g")
+    .attr("class","features");
+
+//Create choropleth scale
+var color = d3.scale.quantize()
+    .domain([1,3])
+    .range(d3.range(3).map(function(i) { return "q" + i + "-3"; }));
+
+//Create a tooltip, hidden at the start
+var tooltip = d3.select("body").append("div").attr("class","tooltip");
+
+d3.json("alle_adressen_HN.geojson",function(error,geodata) {
+  if (error) return console.log(error); //unknown error, check the console
+
+  //Create a path for each map feature in the data
+  features.selectAll("path")
+    .data(geodata.features)
+    .enter()
+    .append("path")
+    .attr("d",path)
+    .attr("class", function(d) { return (typeof color(d.properties.lage) == "string" ? color(d.properties.lage) : ""); })
+    .on("mouseover",showTooltip)
+    .on("mousemove",moveTooltip)
+    .on("mouseout",hideTooltip)
+    .on("click",clicked);
+
+});
+
+// Add optional onClick events for features here
+// d.properties contains the attributes (e.g. d.properties.name, d.properties.population)
+function clicked(d,i) {
+
+}
+
+
+//Position of the tooltip relative to the cursor
+var tooltipOffset = {x: 5, y: -25};
+
+//Create a tooltip, hidden at the start
+function showTooltip(d) {
+  moveTooltip();
+
+  tooltip.style("display","block")
+      .text(d.properties.strasse);
+}
+
+//Move the tooltip to track the mouse
+function moveTooltip() {
+  tooltip.style("top",(d3.event.pageY+tooltipOffset.y)+"px")
+      .style("left",(d3.event.pageX+tooltipOffset.x)+"px");
+}
+
+//Create a tooltip, hidden at the start
+function hideTooltip() {
+  tooltip.style("display","none");
+}
+</script>
