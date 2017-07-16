@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+body {
+    text-align: center;
+}
+
+.welcome {
+    font-family: arial;
+    font-size: 40px;
+}
+
+.click {
+    font-family: arial;
+    font-size: 40px;
+}
+
+.afterclick {
+    visibility: hidden;
+    font-family: arial;
+    font-size: 40px;
+}
+
+.countdown {
+    visibility: hidden;
+    font-family: arial;
+    font-size: 40px;
+}
+</style>
+
+<head>
+    <title>Wann ist wieder Coding-Bootcamp?</title>
+</head>
+
+<body>
+    <p class="welcome">Klicke auf den Button, um zu starten</p>
+    <button class="click">Klick mich!</button>
+    <p class="afterclick"> Das nächste Coding-Bootcamp startet in:</p>
+    <p class="countdown"></p>
+    <script>
+    // Den Beginn des nächsten Moduls setzen
+    var goal = new Date("Oct 13, 2017 09:00:00").getTime();
+
+    // Der Counter soll sich jede Sekunde aktualisieren
+    var counter = setInterval(function() {
+
+        // Das heutige Datum aus den Systemeinstellungen lesen
+        var now = new Date().getTime();
+
+        // Berechnung des Abstandes
+        var distance = goal - now;
+
+        // Berechnung der Zeiten
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Darstellung der verbleibenden Zeit
+        document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/> " + minutes + " Minuten <br/>und<br/> " + seconds + " Sekunden ";
+
+    }, 1000);
+
+    function onclick(event) {
+        event.preventDefault();
+        document.querySelector(".welcome").style.display = "none";
+        document.querySelector(".click").style.display = "none";
+        document.querySelector(".afterclick").style.visibility = "visible";
+        document.querySelector(".countdown").style.visibility = "visible";
+
+    }
+
+    document.querySelector(".click").addEventListener("click", onclick);
+    </script>
+</body>
+
+</html>

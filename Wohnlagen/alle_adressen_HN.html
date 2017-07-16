@@ -41,13 +41,16 @@ div.tooltip {
 
 //Map dimensions (in pixels)
 var width = 990,
-    height = 516;
+    height = 516; 
 
 //Map projection
 var projection = d3.geoMercator()
     .scale(201636.3726545554)
     .center([9.183771,49.1556739423777]) //projection center
     .translate([width/2,height/2]) //translate to center the map in view
+
+
+
 
 //Generate paths based on projection
 var path = d3.geoPath()
