@@ -69,6 +69,13 @@
             // Die Funktion soll erst nach dem Buttonclick starten, um Ressourcen auf der Landing-Page zu sparen
             function onclick(event) {
 
+                //Wir legen das verändert Aussehen der Seite nach dem Button-Click fest
+                event.preventDefault();
+                document.querySelector(".welcome").style.display = "none";
+                document.querySelector(".click").style.display = "none";
+                document.querySelector(".afterclick").style.display = "block";
+                document.querySelector(".countdown").style.display = "block";
+
                 // Das Intervall auf 1000ms setzen
                 var countervar = setInterval(counter, 1000);
 
@@ -111,13 +118,6 @@
                     }
 
                 };
-
-                event.preventDefault();
-                document.querySelector(".welcome").style.display = "none";
-                document.querySelector(".click").style.display = "none";
-                document.querySelector(".afterclick").style.display = "block";
-                document.querySelector(".countdown").style.display = "block";
-
             }
 
             document.querySelector(".click").addEventListener("click", onclick);
