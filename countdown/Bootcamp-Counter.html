@@ -47,7 +47,7 @@ body {
 
     // Wir generieren einen Counter, der sich jede Sekunde aktualisieren soll
 
-    //Die Funktion soll erst nach dem Buttonclick starten, um Ressourcen zu sparen
+    //Die Funktion soll erst nach dem Buttonclick starten, um Ressourcen bei der Landing-Page zu sparen
     function onclick(event) {
 
         //Das Intervall auf 1000ms setzen
@@ -72,10 +72,10 @@ body {
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 // Darstellung der verbleibenden Zeit
-                document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/> " + minutes + " Minuten <br/>und<br/> " + seconds + " Sekunden ";
+                document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/>" + minutes + " Minuten <br/>und<br/>" + seconds + " Sekunden";
             }
 
-            // Liegt das aktuelle Datum nach dem Ende des dritten Moduls, zählt die Funktion die Tage bis zu Modul 4
+            // Liegt das aktuelle Datum nach dem Ende des dritten Moduls, zählt die Funktion die Tage bis zum Start von Modul 4
             else if ((now > modul3finish) && (now < modul4start)) {
 
                 // Berechnung des Abstands
@@ -88,19 +88,19 @@ body {
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 // Darstellung der verbleibenden Zeit
-                document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/> " + minutes + " Minuten <br/>und<br/> " + seconds + " Sekunden ";
+                document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/>" + minutes + " Minuten <br/>und<br/>" + seconds + " Sekunden";
             }
 
-            //liegt das Datum zwischen dem Start und dem Ende von Modul 3 oder Modul 4, wünscht die Funktion viel Spaß
+            //liegt das Datum zwischen dem Start und dem Ende von Modul 3 oder Modul 4, wünscht die Funktion viel Spaß beim coden.
             else if (((now > modul3start) && (now < modul3finish)) || ((now > modul4start) && (now < modul4finish))) {
 
-                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp läuft. Viel Spaß!";
+                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp läuft.<br/>Viel Spaß beim coden!";
                 document.querySelector(".afterclick").style.display = "none";
             }
 
             //liegt das Datum hinter dem Ende des vierten Moduls, bedauert die Funktion das Ende des Bootcamps
             else {
-                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp 2017 ist leider beendet... <br/>Aber toll war es!";
+                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp 2017 ist leider beendet...<br/>Aber toll war es!";
                 document.querySelector(".afterclick").style.display = "none";
             }
 
