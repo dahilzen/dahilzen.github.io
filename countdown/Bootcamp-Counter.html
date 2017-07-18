@@ -16,13 +16,13 @@ body {
 }
 
 .afterclick {
-    visibility: hidden;
+    display: none;
     font-family: arial;
     font-size: 40px;
 }
 
 .countdown {
-    visibility: hidden;
+    display: none;
     font-family: arial;
     font-size: 40px;
 }
@@ -38,35 +38,79 @@ body {
     <p class="afterclick"> Das nächste Coding-Bootcamp startet in:</p>
     <p class="countdown"></p>
     <script>
-    // Den Beginn des nächsten Moduls setzen
-    var goal = new Date("Oct 13, 2017 09:00:00").getTime();
+    // Start und Ende der nächsten Module setzen
+    var modul3start = new Date("Oct 13, 2017 09:00:00").getTime();
+    var modul3finish = new Date("Oct 17, 2017 16:00:00").getTime();
+    var modul4start = new Date("Nov 27, 2017 09:00:00").getTime();
+    var modul4finish = new Date("Nov 29, 2017 16:00:00").getTime();
 
-    // Der Counter soll sich jede Sekunde aktualisieren
-    var counter = setInterval(function() {
 
-        // Das heutige Datum aus den Systemeinstellungen lesen
-        var now = new Date().getTime();
+    // Wir generieren einen Counter, der sich jede Sekunde aktualisieren soll
 
-        // Berechnung des Abstandes
-        var distance = goal - now;
-
-        // Berechnung der Zeiten
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Darstellung der verbleibenden Zeit
-        document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/> " + minutes + " Minuten <br/>und<br/> " + seconds + " Sekunden ";
-
-    }, 1000);
-
+    //Die Funktion soll erst nach dem Buttonclick starten, um Ressourcen zu sparen
     function onclick(event) {
+
+        //Das Intervall auf 1000ms setzen
+        var countervar = setInterval(counter, 1000);
+
+        //Die Funktion definieren
+        function counter() {
+
+            // Das heutige Datum aus den Systemeinstellungen lesen. Das muss innerhalb der Intervall-Funktion geschehen, weil sich die ausgelesene Zeit ansonsten nicht ändert und dementsprechend auch nicht heruntergezählt wird.
+            var now = new Date().getTime();
+
+            //Bei einem Datum vor dem Start des dritten Moduls zählt die Funktion die Tage bis zum 13. Oktober 2017
+            if (now < modul3start) {
+
+                // Berechnung des Abstands
+                var distance = modul3start - now;
+
+                // Berechnung der Zeiten
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Darstellung der verbleibenden Zeit
+                document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/> " + minutes + " Minuten <br/>und<br/> " + seconds + " Sekunden ";
+            }
+
+            // Liegt das aktuelle Datum nach dem Ende des dritten Moduls, zählt die Funktion die Tage bis zu Modul 4
+            else if ((now > modul3finish) && (now < modul4start)) {
+
+                // Berechnung des Abstands
+                var distance = modul4start - now;
+
+                // Berechnung der Zeiten
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Darstellung der verbleibenden Zeit
+                document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/> " + minutes + " Minuten <br/>und<br/> " + seconds + " Sekunden ";
+            }
+
+            //liegt das Datum zwischen dem Start und dem Ende von Modul 3 oder Modul 4, wünscht die Funktion viel Spaß
+            else if (((now > modul3start) && (now < modul3finish)) || ((now > modul4start) && (now < modul4finish))) {
+
+                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp läuft. Viel Spaß!";
+                document.querySelector(".afterclick").style.display = "none";
+            }
+
+            //liegt das Datum hinter dem Ende des vierten Moduls, bedauert die Funktion das Ende des Bootcamps
+            else {
+                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp 2017 ist leider beendet... <br/>Aber toll war es!";
+                document.querySelector(".afterclick").style.display = "none";
+            }
+
+        };
+
         event.preventDefault();
         document.querySelector(".welcome").style.display = "none";
         document.querySelector(".click").style.display = "none";
-        document.querySelector(".afterclick").style.visibility = "visible";
-        document.querySelector(".countdown").style.visibility = "visible";
+        document.querySelector(".afterclick").style.display = "block";
+        document.querySelector(".countdown").style.display = "block";
 
     }
 
