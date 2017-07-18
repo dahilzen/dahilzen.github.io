@@ -35,7 +35,7 @@
 <body>
     <p class="welcome">Klicke auf den Button, um zu starten</p>
     <button class="click">Klick mich!</button>
-    <p class="afterclick"> Das nächste Coding-Bootcamp startet in:</p>
+    <p class="afterclick"></p>
     <p class="countdown"></p>
     <script>
     // Start und Ende der nächsten Module setzen
@@ -72,6 +72,7 @@
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 // Darstellung der verbleibenden Zeit
+                document.querySelector(".afterclick").innerHTML = "Das nächste Coding-Bootcamp startet in:";
                 document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/>" + minutes + " Minuten <br/>und<br/>" + seconds + " Sekunden";
             }
 
@@ -88,20 +89,20 @@
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 // Darstellung der verbleibenden Zeit
+                document.querySelector(".afterclick").innerHTML = "Das nächste Coding-Bootcamp startet in:";
                 document.querySelector(".countdown").innerHTML = days + " Tagen <br/>" + hours + " Stunden<br/>" + minutes + " Minuten <br/>und<br/>" + seconds + " Sekunden";
             }
 
             //liegt das Datum zwischen dem Start und dem Ende von Modul 3 oder Modul 4, wünscht die Funktion viel Spaß beim coden.
             else if (((now > modul3start) && (now < modul3finish)) || ((now > modul4start) && (now < modul4finish))) {
-
-                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp läuft.<br/>Viel Spaß beim coden!";
                 document.querySelector(".afterclick").style.display = "none";
+                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp läuft.<br/>Viel Spaß beim coden!";
             }
 
             //liegt das Datum hinter dem Ende des vierten Moduls, bedauert die Funktion das Ende des Bootcamps
             else {
-                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp 2017 ist leider beendet...<br/>Aber toll war es!";
                 document.querySelector(".afterclick").style.display = "none";
+                document.querySelector(".countdown").innerHTML = "Das Coding-Bootcamp 2017 ist leider beendet...<br/>Aber toll war es!";
             }
 
         };
