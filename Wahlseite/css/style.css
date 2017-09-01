@@ -1,0 +1,11 @@
+body {
+    max-width: 990px;
+}
+
+.wahlkreis:hover {
+    background: lightgrey;
+}
+
+p {
+    font-weight: bold;
+}
