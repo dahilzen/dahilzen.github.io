@@ -1,36 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Die Bundestagswahl 2017 bei der Heilbronner Stimme</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Die Bundestagswahl 2017 bei der Heilbronner Stimme</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 
 <body>
-
-  <div class="contaner-fluid text-center">
-
-    <div class="row">
-      <div class="col-xs-8 col-md-4 wahlkreis">
-        <img src="img/heilbronn.png" alt="Wahlkreis Heilbronn" style="width: 100%" />
-        <p>Wahlkreis Heilbronn</p>
-      </div>
-      <div class="col-xs-8 col-md-4 wahlkreis">
-        <img src="img/hohenlohe.png" alt="Wahlkreis Schwäbisch Hall-Hohenlohe" style="width: 100%" />
-        <p>Wahlkreis Schwäbisch Hall-Hohenlohe</p>
-      </div>
-      <div class="col-xs-8 col-md-4 wahlkreis">
-        <img class="wahlkreis" src="img/neckar_zaber.png" alt="Wahlkreis Neckar-Zaber" style="width: 100%" />
-        <p>Wahlkreis Neckar-Zaber</p>
-      </div>
+    <!-- Bei Klick auf einen Wahlkreis sollen die Kandidaten eingeblendet werden -->
+    <!-- Kandidaten des Wahlkreises Neckar-Zaber -->
+    <div class="contaner-fluid text-center" id="neckar_zaber">
+        <h4>Die Kandidaten des Wahlkreises Neckar-Zaber</h4>
+        <div class="row">
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/cdu_gienger.png" alt="Eberhard Gienger CDU" style="width: 30%">
+                <p>
+                    Eberhard Gienger
+                    <br>CDU</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/fdp_link.png" alt="Michael Georg Link FDP" style="width: 30%">
+                <p>Michael Georg Link
+                    <br>FDP</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/gruene_fick.png" alt="Thomas Fick GRUENE" style="width: 30%">
+                <p>Thomas Fick
+                    <br>GRUENE</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/linke_wanner.png" alt="Konrad Wanner LINKE" style="width: 30%">
+                <p>Konrad Wanner
+                    <br>LINKE</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/spd_juratovic.png" alt="Josip Juratovic SPD" style="width: 30%">
+                <p>Josip Juratovic
+                    <br>SPD</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/afd_koegel.png" alt="Jürgen Koegel AFD" style="width: 30%">
+                <p>Jürgen Koegel
+                    <br>AFD</p>
+            </div>
+        </div>
     </div>
 
-  </div>
+    <!-- Kandidaten des Wahlkreises Heilbronn -->
 
-  <script type="text/javascript" src="js/iframeResizer.contentWindow.min.js"></script>
+    <div class="contaner-fluid text-center" id="heilbronn">
+        <h4>Die Kandidaten des Wahlkreises Heilbronn</h4>
+        <div class="row">
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/cdu_gienger.png" alt="Eberhard Gienger CDU" style="width: 30%">
+                <p>
+                    Eberhard Gienger
+                    <br>CDU</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/fdp_link.png " alt="Michael Georg Link FDP " style="width: 30%">
+                <p>Michael Georg Link
+                    <br>FDP</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/gruene_fick.png" alt="Thomas Fick GRUENE" style="width: 30%">
+                <p>Thomas Fick
+                    <br>GRUENE</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/linke_wanner.png " alt="Konrad Wanner LINKE " style="width: 30%">
+                <p>Konrad Wanner
+                    <br>LINKE</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/spd_juratovic.png" alt="Josip Juratovic SPD" style="width: 30%">
+                <p>Josip Juratovic
+                    <br>SPD</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/afd_koegel.png " alt="Jürgen Koegel AFD " style="width: 30%">
+                <p>Jürgen Koegel
+                    <br>AFD</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- Kandidaten des Wahlkreises Schwäbisch Hall-Hohenlohe -->
+
+    <div class="contaner-fluid text-center" id="hohenlohe">
+        <h4>Die Kandidaten des Wahlkreises Schwäbisch Hall-Hohenlohe</h4>
+        <div class="row">
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/cdu_gienger.png" alt="Eberhard Gienger CDU" style="width: 30%">
+                <p>
+                    Eberhard Gienger
+                    <br>CDU</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/fdp_link.png " alt="Michael Georg Link FDP " style="width: 30%">
+                <p>Michael Georg Link
+                    <br>FDP</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/gruene_fick.png" alt="Thomas Fick GRUENE" style="width: 30%">
+                <p>Thomas Fick
+                    <br>GRUENE</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/linke_wanner.png " alt="Konrad Wanner LINKE " style="width: 30%">
+                <p>Konrad Wanner
+                    <br>LINKE</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/spd_juratovic.png" alt="Josip Juratovic SPD" style="width: 30%">
+                <p>Josip Juratovic
+                    <br>SPD</p>
+            </div>
+            <div class="col-xs-8 col-md-6 wahlkreis">
+                <img src="img/neckar-zaber/afd_koegel.png " alt="Jürgen Koegel AFD " style="width: 30%">
+                <p>Jürgen Koegel
+                    <br>AFD</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Darstellung der drei relevanten Wahlkreise -->
+
+    <div class="contaner-fluid text-center" id="wahlkreise">
+        <h4>Wählen Sie einen Wahlkreis</h4>
+        <div class="row">
+            <a href="#heilbronn" style="text-decoration:none;color:black">
+                <div class=" col-xs-8 col-md-4 wahlkreis" id="wk_heilbronn" href="#heilbronn ">
+                    <img src="img/heilbronn.png" alt="Wahlkreis Heilbronn" style="width: 100% " />
+                    <p>Wahlkreis Heilbronn</p>
+            </a>
+            </div>
+            <a href="#hohenlohe" style="text-decoration:none;color:black">
+                <div class="col-xs-8 col-md-4 wahlkreis" id="wk_hohenlohe">
+                    <img src="img/hohenlohe.png" alt="Wahlkreis Schwäbisch Hall-Hohenlohe" style="width: 100% " />
+                    <p>Wahlkreis Schwäbisch Hall-Hohenlohe</p>
+            </a>
+            </div>
+            <a href="#neckar_zaber" style="text-decoration:none;color:black">
+                <div class="col-xs-8 col-md-4 wahlkreis" id="wk_zaber">
+                    <img src="img/neckar_zaber.png " alt="Wahlkreis Neckar-Zaber" style="width: 100% " />
+                    <p>Wahlkreis Neckar-Zaber</p>
+            </a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript " src="js/iframeResizer.contentWindow.min.js "></script>
+    <script src="https://code.jquery.com/jquery-latest.js "></script>
+
+    <script>
+    $(document).ready(function() {
+        $("#wk_zaber ").click(function() {
+            $("#heilbronn ").stop(true).fadeOut(0);
+            $("#hohenlohe ").stop(true).fadeOut(0);
+            $("#neckar_zaber ").stop(true).fadeToggle();
+        });
+
+        $("#wk_heilbronn ").click(function() {
+            $("#neckar_zaber ").stop(true).fadeOut(0);
+            $("#hohenlohe ").stop(true).fadeOut(0);
+            $("#heilbronn ").stop(true).fadeToggle();
+        });
+
+        $("#wk_hohenlohe ").click(function() {
+            $("#neckar_zaber ").stop(true).fadeOut(0);
+            $("#heilbronn ").stop(true).fadeOut(0);
+            $("#hohenlohe ").stop(true).fadeToggle();
+        });
+    });
+    </script>
 </body>
 
 </html>
