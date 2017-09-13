@@ -1,8 +1,9 @@
 body {
     font-family: "Open Sans", Sans-Serif !important;
+    max-width: 645px;
 }
 
-.wahlkreis:hover {
+.hover:hover {
     background: lightgrey;
 }
 
@@ -15,16 +16,22 @@ body {
     margin-top: 10px;
 }
 
-#neckar_zaber, #heilbronn, #hohenlohe {
+#neckar_zaber,
+#heilbronn,
+#hohenlohe {
     display: none;
     margin-bottom: 40px;
     margin-top: 10px;
 }
 
-p {
+.hover>p {
     font-weight: bold;
 }
 
-p::first-line {
+.hover>p::first-line {
     font-weight: normal;
+}
+
+div>img {
+    margin-top: 20px;
 }
