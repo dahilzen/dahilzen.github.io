@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta charset="utf-8">
+
+<head>
+    <title>Die Bundestagswahl in der Region</title>
+
+    <link rel="stylesheet" type="text/css" href="css/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <script src="js/leaflet.js"></script>
+    <script src="data/btw13.js"></script>
+
+    <script>
+    // Die Karte initialisieren
+    var map = L.map('map', {
+        zoomControl: false,
+        attributionControl: false
+    }).setView([49.2127168, 9.3962733], 10);
+
+    var geojson;
+    var party = "CDU"
+
+    // Berechnung des Maximalwerts der Parteien in den Gemeinden
+
+    var max = 0;
+    for (var i = 0; i < btw13.features.length; i++) {
+        var current = btw13.features[i];
+        if (current.properties.CDU > max)
+            max = current.properties.CDU
+    };
+
+    // Die Farbe des Polygons bestimmen
+
+    function getColor(d) {
+        return party === "CDU" ? '#000000' :
+            party === "SPD" ? '#ff0000' :
+            party === "FDP" ? 'orange' :
+            '#FFEDA0';
+    }
+
+    // Die Füllstärke abhängig von der erreichten Stärke der Partei bestimmen
+
+    function getOpacity(g) {
+        return g === max ? 1 :
+            g > max * 0.9 ? 0.9 :
+            g > max * 0.8 ? 0.8 :
+            g > max * 0.7 ? 0.7 :
+            g > max * 0.6 ? 0.6 :
+            g > max * 0.5 ? 0.5 :
+            g > max * 0.4 ? 0.4 :
+            g > max * 0.3 ? 0.3 :
+            g > max * 0.2 ? 0.2 :
+            g > max * 0.1 ? 0.1 :
+            0;
+    }
+
+    // Die Styles bestimmen
+
+    function style(feature) {
+        return {
+            fillColor: getColor(),
+            weight: 1,
+            color: 'white',
+            fillOpacity: getOpacity(feature.properties.CDU),
+        };
+    }
+
+    // Interaktionen hinzufügen
+
+    function highlightFeature(e) {
+        var layer = e.target;
+
+        if (party != "FDP") {
+            layer.setStyle({
+                weight: 5,
+                color: 'yellow',
+                dashArray: '',
+            })
+        } else {
+            layer.setStyle({
+                weight: 5,
+                color: 'black',
+                dashArray: '',
+            })
+        };
+        info.update(layer.feature.properties);
+
+        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+            layer.bringToFront();
+        }
+    }
+
+    function resetHighlight(e) {
+        geojson.resetStyle(e.target);
+        info.update();
+
+    }
+
+    function onEachFeature(feature, layer) {
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight
+        });
+    }
+
+    // Den eigentlichen Layer initialisieren
+
+    var geojson = L.geoJson(btw13, {
+        style: style,
+        onEachFeature: onEachFeature,
+    }).addTo(map);
+
+    // Den Infokasten programmieren
+
+    var info = L.control({ position: 'topright' });
+
+    info.onAdd = function(map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+    };
+
+    // method that we will use to update the control based on feature properties passed
+    info.update = function(props) {
+        this._div.innerHTML = (props ? "<h4>Anteil der Zweitstimmen in " + props.Gemeinde + " </h4>" + "CDU: " +
+            dotToComma(props.CDU) + "%" : "<h4>Fahren Sie über eine Gemeinde</h4>");
+    };
+
+    info.addTo(map);
+
+    // Funktion, um Dezimalpunkt zu Dezimalkomma umzuwandeln
+
+    function dotToComma(number) {
+        return number.toString().replace(/\./g, ',');
+    }
+    </script>
+
+</body>
+
+</html>
