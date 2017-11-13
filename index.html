@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <title>David Hilzendegen | Journalismus, Daten und Code</title>
+  <link rel="stylesheet" type="text/css" href="hp/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="hp/css/styles.css">
+</head>
+
+<body>
+
+  <div class="welcome">
+    <h1 class="baffle">David Hilzendegen</h1>
+
+    <div class="abstand">
+      <h4 class="typed"></h4>
+    </div>
+
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <h2>#projekte</h2>
+        <p class="text">
+
+          <a href="https://www.stimme.de/kleineanfragen" target="_blank">Die Anfragenflut im Landtag</a> (mitsamt <a href="https://medium.com/@dahilzen/wie-die-afd-die-landesregierung-mit-anfragen-flutet-und-wie-man-die-anfragen-scraped-4d48a5257cd9" target="_blank">Werkstattbericht</a>) Wie die AfD in Baden-Württemberg das Kontrollmittel der Kleinen Anfrage missbraucht. Eine Analyse von 13.000 Kleinen Anfragen.
+
+          <a href="https://www.stimme.de/3819264" target="_blank">Vergessen im Funkloch</a> (mitsamt <a href="https://medium.com/@dahilzen/wir-schicken-es-ihnen-per-post-wie-man-an-standortdaten-von-84-492-funkmasten-kommt-704fc859ee26" target="_blank">Werkstattbericht</a>) In Deutschland klaffen große Funklöcher &mdash; besonders in der Region Heilbronn-Hohenlohe. Eine datengetriebene Zustandsanalyse.
+
+          <a href="https://www.stimme.de/arminhn" target="_blank">Arm in Heilbronn</a> Auch in der reichen Region Heilbronn gibt es viele Menschen, die arm sind. Wir haben sie besucht.
+
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h2>#vita</h2>
+        <p class="text">1984 in der Pfalz geboren, Abitur in Landau, danach Studium an der Johannes Gutenberg-Universität in Mainz: Politikwissenschaft und Soziologie mit empirischem Schwerpunkt. Abschluss als Magister Artium. Während des Studiums erste journalistische Gehversuche, später Volontariat beim Stadtmagazin LIFT in Stuttgart. Seit 2015 in der Onlineredaktion der <a href="https://www.stimme.de" target="_blank">Heilbronner Stimme</a>, wo alle Leidenschaften aufeinandertreffen: Zahlen, Daten, Code und Journalismus.</p>
+      </div>
+
+      <div class="col-md-4">
+        <h2>#skills</h2>
+        <p class="text">
+          <span class="farbe">Coding:</span> HTML, CSS, Javascript, Python;
+          <span class="farbe">Analyse:</span> Excel, Pandas, R, SPSS, SQL;
+          <span class="farbe">Visualisierung:</span> D3, Tableau, Highcharts;
+          <span class="farbe">Kartographie:</span> Leaflet, Qgis, Carto, Mapbox;
+          <span class="farbe">Office:</span> Word, Power Point, LaTex, OpenOffice, Google Docs;
+          <span class="farbe">Sprachen:</span> Deutsch, Englisch;
+          <span class="farbe">Führerschein:</span> PKW Klasse B
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <a class="footimg" href="https://www.twitter.com/dahilzen" target="_blank"><img src="hp/img/twitter.png" alt="Twitter"></a>
+    <a class="footimg" href="https://www.facebook.com/dahilzen" target="_blank"><img src="hp/img/fb.png" alt="Facebook"></a>
+    <a class="footimg" href="mailto:david.hilzendegen@posteo.de"><img src="hp/img/mail.png" alt="Mail"></a>
+    <a href="https://www.medium.com/@dahilzen" target="_blank"><img src="hp/img/medium.png" alt="Medium"></a>
+  </div>
+
+  <script src="hp/js/typed.min.js"></script>
+  <script src="hp/js/baffle.min.js"></script>
+
+  <script>
+  window.onload = function() {
+    function typewrite() {
+      var options = {
+        // strings: ["Daten&nbsp;&nbsp; ^750 Journalismus&nbsp;&nbsp; ^750 Code ^2000"],
+        strings: ["Datenjournalist ^2000", "Datenanalyst ^2000", "Datennerd ^2000"],
+        typeSpeed: 70,
+        backSpeed: 50,
+        loop: true,
+        showCursor: false,
+      }
+      var typed = new Typed(".typed", options);
+    };
+
+    setTimeout(typewrite, 1000);
+
+  };
+
+  var baffleHead = baffle('.baffle', {
+    characters: '~!@#$%^&*()-+=[]{}|;:,./<>?',
+    speed: 80
+  });
+  baffleHead.start().reveal(1000, 1000);
+
+  </script>
+
+</body>
+
+</html>

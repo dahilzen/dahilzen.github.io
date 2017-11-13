@@ -1,0 +1,44 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: white;
+  background-color: #293133;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.abstand {
+  height: 50px;
+}
+
+.footer {
+  padding-top: 20px;
+  text-align: center;
+}
+
+img {
+  filter: invert(100%);
+  height: 30px;
+}
+
+img:hover {
+  filter: invert(0%);
+}
+
+.footimg {
+  padding-right: 15px;
+}
+
+.container {
+  min-height: 300px;
+}
+
+.farbe {
+  color: yellow;
+}
+
+* {
+  font-size: 102%;
+}
