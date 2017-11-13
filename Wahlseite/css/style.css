@@ -1,6 +1,6 @@
 body {
     font-family: "Open Sans", Sans-Serif !important;
-    max-width: 645px;
+    width: 100%;
 }
 
 .hover:hover {
