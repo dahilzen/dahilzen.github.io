@@ -31,6 +31,10 @@ img:hover {
   padding-right: 15px;
 }
 
+.foottext{
+  font-size: small;
+}
+
 .container {
   min-height: 300px;
 }
