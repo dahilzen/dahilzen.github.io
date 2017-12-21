@@ -3,7 +3,7 @@ body {
   padding-bottom: 50px;
   color: white;
   background-color: #293133;
-}
+  }
 
 .welcome {
   text-align: center;
@@ -41,6 +41,10 @@ img:hover {
 
 .farbe {
   color: yellow;
+}
+
+a {
+  color: #46a8fc !important;
 }
 
 * {
