@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<style>
+body {
+    font: 12px sans-serif;
+    width: 100%;
+    height: 550px;
+}
+
+.land {
+    stroke-width: 1px;
+    stroke: #000000;
+    fill: transparent;
+    cursor: pointer;
+}
+
+.brauer {
+    fill: #8484FF;
+    stroke: black;
+    stroke-width: .1;
+}
+
+</style>
+
+<body>
+    <script src='http://d3js.org/d3.v4.min.js'></script>
+    <script src='http://d3js.org/topojson.v1.min.js'></script>
+    <script>
+    //Map dimensions (in pixels)
+    function draw() {
+        var map = d3.select('body')
+
+        var width = parseFloat(map.style('width'));
+        var height = parseFloat(map.style('height'));
+
+        //Map projection
+        var projection = d3.geoMercator()
+            .scale(getScale())
+            .center([10.451871070669485, 51.3217172050879]) //projection center
+            .translate([width / 2, height / 2]) //translate to center the map in view
+
+        //Generate paths based on projection
+        var path = d3.geoPath()
+            .projection(projection)
+            .pointRadius(2);;
+
+        //Create an SVG
+        var svg = map.append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        d3.queue()
+            .defer(d3.json, 'germany.topo.json')
+            .defer(d3.csv, 'brauer.csv', typeBrauer)
+            .await(ready);
+
+        function ready(error, ger, brauer) {
+            if (error) throw error;
+
+            //Create a path for each map feature in the data
+            svg.selectAll('path')
+                .data(topojson.feature(ger, ger.objects.vg2500_lan).features)
+                .enter()
+                .append('path')
+                .attr('class', 'land')
+                .attr('d', path);
+
+            svg.append("path")
+                .datum({ type: "MultiPoint", coordinates: brauer })
+                .attr("class", "brauer")
+                .attr("d", path);
+        };
+    }
+
+    function typeBrauer(d) {
+        d[0] = +d.lon;
+        d[1] = +d.lat;
+        d.arcs = { type: "MultiLineString", coordinates: [] };
+        return d;
+    }
+
+    draw();
+    var timeout;
+
+    d3.select(window).on('resize', function() {
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function() {
+            d3.select('svg').remove();
+            draw();
+        }, 200);
+    });
+
+    // Skalierung abhängig von Viewport-Breite errechnen
+    function getScale() {
+        var viewportWidth = window.innerWidth;
+        var initScale;
+        if (viewportWidth < [600]) {
+            initScale = 1950;
+        } else {
+            initScale = 2250;
+        }
+        console.log(initScale)
+        return initScale;
+    }
+
+    </script>
