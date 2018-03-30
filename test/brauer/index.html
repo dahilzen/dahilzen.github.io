@@ -58,9 +58,11 @@ body {
         function ready(error, ger, brauer) {
             if (error) throw error;
 
+            var feature = topojson.feature(ger, ger.objects.vg2500_lan).features
+
             //Create a path for each map feature in the data
             svg.selectAll('path')
-                .data(topojson.feature(ger, ger.objects.vg2500_lan).features)
+                .data(feature)
                 .enter()
                 .append('path')
                 .attr('class', 'land')
@@ -76,7 +78,7 @@ body {
     function typeBrauer(d) {
         d[0] = +d.lon;
         d[1] = +d.lat;
-        d.arcs = { type: "MultiLineString", coordinates: [] };
+        d.arcs = { type: "MultiPoint", coordinates: [] };
         return d;
     }
 
@@ -101,7 +103,6 @@ body {
         } else {
             initScale = 2250;
         }
-        console.log(initScale)
         return initScale;
     }
 

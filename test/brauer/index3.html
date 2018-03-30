@@ -2,107 +2,104 @@
 <meta charset='utf-8'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <style>
-body {
-    font: 16px sans-serif;
-    max-width: 645px;
-    height: 550px;
-    text-align: center;
-}
+    body {
+        font: 16px sans-serif;
+        max-width: 645px;
+        height: 550px;
+        text-align: center;
+    }
 
-.land {
-    stroke-width: 1px;
-    stroke: #000000;
-    fill: transparent;
-    cursor: pointer;
-}
+    .land {
+        stroke-width: 1px;
+        stroke: #000000;
+        fill: transparent;
+        cursor: pointer;
+    }
 
-.brauer {
-    fill: firebrick;
-}
-
+    .brauer {
+        fill: firebrick;
+        cursor: pointer;
+    }
 </style>
 
 <body>
     <script src='https://d3js.org/d3.v4.min.js'></script>
     <script src='https://d3js.org/topojson.v1.min.js'></script>
     <script>
-    //Map dimensions (in pixels)
-    function draw() {
-        var width = 200,
-            height = 250
+        //Map dimensions (in pixels)
+        function draw() {
+            var width = 200,
+                height = 250
 
-        //Map projection
-        var projection = d3.geoMercator()
-            .scale(1000)
-            .center([10.451871070669485, 51.3217172050879]) //projection center
-            .translate([width / 2, height / 2]) //translate to center the map in view
+            //Map projection
+            var projection = d3.geoMercator()
+                .scale(1000)
+                .center([10.451871070669485, 51.3217172050879]) //projection center
+                .translate([width / 2, height / 2]) //translate to center the map in view
 
-        //Generate paths based on projection
-        var path = d3.geoPath()
-            .projection(projection);
+            //Generate paths based on projection
+            var path = d3.geoPath()
+                .projection(projection);
 
-        d3.queue()
-            .defer(d3.json, 'germany.topo.json')
-            .defer(d3.csv, 'brauer2.csv')
-            .await(ready);
+            d3.queue()
+                .defer(d3.json, 'germany.topo.json')
+                .defer(d3.csv, 'brauer2.csv')
+                .await(ready);
 
-        function ready(error, ger, brauer) {
-            if (error) throw error;
+            function ready(error, ger, brauer) {
+                if (error) throw error;
 
-            var feature = topojson.feature(ger, ger.objects.vg2500_lan).features;
+                var feature = topojson.feature(ger, ger.objects.vg2500_lan).features;
 
-            var states = d3.set(brauer.map(function(d) { return d.land })).values();
-            states.sort();
+                var states = d3.set(brauer.map(function (d) {
+                    return d.land
+                })).values();
+                states.sort();
 
-            states.forEach(function(d) {
-                drawMap(d, width, height);
-            })
+                states.forEach(function (d) {
+                    drawMap(d, width, height);
+                })
 
-            function drawMap(state, width, height) {
+                function drawMap(state, width, height) {
 
-                var svg = d3.select("body")
-                    .append('svg')
-                    .attr('class', 'map')
-                    .attr('width', width)
-                    .attr('height', height);
+                    var svg = d3.select("body")
+                        .append('svg')
+                        .attr('class', 'map_'+state)
+                        .attr('width', width)
+                        .attr('height', height);
 
-                svg.selectAll('path')
-                    .data(topojson.feature(ger, ger.objects.vg2500_lan).features)
-                    .enter()
-                    .append('path')
-                    .attr('class', 'land')
-                    .attr('d', path);
+                    svg.selectAll('path')
+                        .data(topojson.feature(ger, ger.objects.vg2500_lan).features)
+                        .enter()
+                        .append('path')
+                        .attr('class', 'land')
+                        .attr('d', path);
 
-                svg.selectAll("circle")
-                    .data(brauer)
-                    .enter()
-                    .append('circle')
-                    .filter(function(d) { return d.land === state })
-                    .attr("cx", function(d) { return projection([d.lon, d.lat])[0]; })
-                    .attr("cy", function(d) { return projection([d.lon, d.lat])[1]; })
-                    .attr("r", "1.5px")
-                    .attr("class", "brauer");
+                    svg.selectAll("circle")
+                        .data(brauer)
+                        .enter()
+                        .append('circle')
+                        .filter(function (d) {
+                            return d.land === state
+                        })
+                        .attr("cx", function (d) {
+                            return projection([d.lon, d.lat])[0];
+                        })
+                        .attr("cy", function (d) {
+                            return projection([d.lon, d.lat])[1];
+                        })
+                        .attr("r", "1.5px")
+                        .attr("class", "brauer");
 
-                svg.append("text")
-                    .attr("dx", width - 40)
-                    .attr("dy", height - 25)
-                    .text(state)
-                    .style('font-weight', 'bold')
+                    svg.append("text")
+                        .attr("dx", width - 40)
+                        .attr("dy", height - 25)
+                        .text(state)
+                        .style('font-weight', 'bold')
 
-            }
-        };
-    }
+                }
+            };
+        }
 
-    draw();
-    var timeout;
-
-    d3.select(window).on('resize', function() {
-        clearTimeout(timeout);
-
-        timeout = setTimeout(function() {
-            d3.selectAll('svg').remove();
-            draw();
-        }, 200);
-    });
-
+        draw();
     </script>
